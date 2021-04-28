@@ -15,7 +15,6 @@ module.exports = function steepestHillTSP() {
     let counter = 0
     while (counter < 100) {
         fx = calculateDistance(x, tspDataSet);
-        console.log(fx)
         let replaceFlag = false
 
         let fxq;
