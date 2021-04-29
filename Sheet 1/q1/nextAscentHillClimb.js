@@ -8,6 +8,7 @@ const tspDataSet = require('./tspDataSet');
 
 
 module.exports = function steepestHillTSP() {
+    console.time("nextAscentHillClimb")
     let x = randomSolution(tspDataSet)
 
 
@@ -19,7 +20,6 @@ module.exports = function steepestHillTSP() {
 
         let fxq;
         // to save all xq's (arrays)
-        let xqs = [];
 
         // for each q element of x
         x.forEach((q, index, x) => {
@@ -31,7 +31,9 @@ module.exports = function steepestHillTSP() {
             xq[index] = xq[randomIndex]
             xq[randomIndex] = temp
 
+
             fxq = calculateDistance(xq, tspDataSet)
+            // console.log(fxq)
 
             if (fxq < fx) {
                 x = xq
@@ -45,6 +47,8 @@ module.exports = function steepestHillTSP() {
 
         counter++
     }
+
+    console.timeEnd("nextAscentHillClimb")
 
     return ({
         route: x,

@@ -9,6 +9,7 @@ const { cloneDeep } = require('lodash');
 
 
 module.exports = function steepestHillTSP() {
+    console.time("steepestHillClimb")
     let x = randomSolution(tspDataSet)
 
 
@@ -55,6 +56,8 @@ module.exports = function steepestHillTSP() {
 
         counter++
     }
+
+    console.timeEnd("steepestHillClimb")
 
     return ({
         route: x,
