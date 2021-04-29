@@ -3,6 +3,7 @@ const isEqual = require('lodash/isEqual');
 const randomSolution = require('./randomSolution');
 const calculateDistance = require('./calculateDistance');
 const tspDataSet = require('./tspDataSet');
+const { random, cloneDeep } = require('lodash');
 
 // let arrayMax = require("../misc/arrayMax")
 
@@ -23,14 +24,15 @@ module.exports = function steepestHillTSP() {
 
         // for each q element of x
         x.forEach((q, index, x) => {
-            let xq = x;
+            let xq = cloneDeep(x);
 
             // either +/- something, or a completely new value, idk
             let randomIndex = Math.floor(Math.random() * xq.length)
-            let temp = xq[index];
-            xq[index] = xq[randomIndex]
-            xq[randomIndex] = temp
-
+            if (!(xq[randomIndex] == 0 || q == 0)) {
+                let temp = xq[index];
+                xq[index] = xq[randomIndex]
+                xq[randomIndex] = temp
+            }
 
             fxq = calculateDistance(xq, tspDataSet)
             // console.log(fxq)
@@ -42,8 +44,9 @@ module.exports = function steepestHillTSP() {
 
         })
 
-        if (!replaceFlag)
+        if (!replaceFlag) {
             x = randomSolution(tspDataSet)
+        }
 
         counter++
     }
