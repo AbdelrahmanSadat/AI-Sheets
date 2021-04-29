@@ -3,6 +3,7 @@ const isEqual = require('lodash/isEqual');
 const randomSolution = require('./randomSolution');
 const calculateDistance = require('./calculateDistance');
 const tspDataSet = require('./tspDataSet');
+const { cloneDeep } = require('lodash');
 
 // let arrayMax = require("../misc/arrayMax")
 
@@ -21,8 +22,8 @@ module.exports = function steepestHillTSP() {
         let xqs = [];
 
         // for each q element of x
-        x.forEach((q, index, x) => {
-            let xq = x;
+        x.forEach((q, index) => {
+            let xq = cloneDeep(x);
 
             // either +/- something, or a completely new value, idk
             let randomIndex = Math.floor(Math.random() * xq.length)
@@ -34,14 +35,17 @@ module.exports = function steepestHillTSP() {
             // to save all xq's (arrays)
             xqs[index] = xq
 
-            fxqs[index] = calculateDistance(xq,tspDataSet)
+            fxqs[index] = calculateDistance(xq, tspDataSet)
         })
 
-        let fxqsMaxIndex = fxqs.indexOf(Math.min(...fxqs));
-        xi = xqs[fxqsMaxIndex]
+        // add the original fx (fx0) to array to include in comparison of best fitness
+        fxqs.push(fx); xqs.push(x);
+        let fxqsMinIndex = fxqs.indexOf(Math.min(...fxqs));
+        let xi = xqs[fxqsMinIndex]
 
-        if (isEqual(x, xi))
+        if (isEqual(x, xi)) {
             x = randomSolution(tspDataSet);
+        }
         else
             x = xi
 
@@ -50,6 +54,6 @@ module.exports = function steepestHillTSP() {
 
     return ({
         route: x,
-        distance:calculateDistance(x, tspDataSet)
+        distance: calculateDistance(x, tspDataSet)
     })
 }
