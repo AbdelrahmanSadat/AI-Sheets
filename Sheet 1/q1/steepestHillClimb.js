@@ -12,7 +12,6 @@ module.exports = function steepestHillTSP() {
     let x = randomSolution(tspDataSet)
 
 
-    // TODO: set condition
     let counter = 0
     while (counter < 100) {
         fx = calculateDistance(x, tspDataSet);
@@ -27,9 +26,14 @@ module.exports = function steepestHillTSP() {
 
             // either +/- something, or a completely new value, idk
             let randomIndex = Math.floor(Math.random() * xq.length)
-            let temp = xq[index];
-            xq[index] = xq[randomIndex]
-            xq[randomIndex] = temp
+
+            // don't swap if it's the first or last city
+            if (!(xq[randomIndex] == 0 || q == 0)) {
+                let temp = xq[index];
+                xq[index] = xq[randomIndex]
+                xq[randomIndex] = temp
+            }
+
 
 
             // to save all xq's (arrays)
