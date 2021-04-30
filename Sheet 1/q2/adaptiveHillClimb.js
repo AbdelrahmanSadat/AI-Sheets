@@ -80,8 +80,11 @@ function adaptiveSphere() {
     return solSphere
 }
 
-console.log(adaptiveRastrigin())
-console.log(adaptiveSphere())
+
+module.exports = {
+    adaptiveRastrigin,
+    adaptiveSphere
+}
 
 
 
