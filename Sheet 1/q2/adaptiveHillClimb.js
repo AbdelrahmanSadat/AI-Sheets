@@ -1,5 +1,6 @@
 let upperLimit = require('./upperLimit')
 let lowerLimit = require('./lowerLimit')
+let cloneDeep = require('lodash/cloneDeep')
 
 let rastrigin = require('./rastrigin')
 let sphere = require('./sphere');
@@ -17,7 +18,7 @@ function adaptiveRastrigin() {
     for (let i = 0; i < 1000; i++) {
         // compute fitness
         fx = rastrigin(x)
-        let xi = x;
+        let xi = cloneDeep(x);
 
         // for each q element of x
         x.forEach((q, index, x) => {
@@ -31,8 +32,8 @@ function adaptiveRastrigin() {
 
         let fxi = rastrigin(xi)
 
-        if (fxi > fx) {
-            x = xi
+        if (fxi < fx) {
+            x = cloneDeep(xi)
             fx = fxi
             solRastrigin.x = xi;
             solRastrigin.fx = fx;
@@ -53,7 +54,7 @@ function adaptiveSphere() {
     for (let i = 0; i < 1000; i++) {
         // compute fitness
         fx = sphere(x)
-        let xi = x;
+        let xi = cloneDeep(x);
 
         // for each q element of x
         x.forEach((q, index, x) => {
@@ -67,8 +68,8 @@ function adaptiveSphere() {
 
         let fxi = sphere(xi)
 
-        if (fxi > fx) {
-            x = xi
+        if (fxi < fx) {
+            x = cloneDeep(xi)
             fx = fxi
             solSphere.x = xi;
             solSphere.fx = fx;
