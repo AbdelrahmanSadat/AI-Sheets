@@ -1,0 +1,7 @@
+- On average, the rastrigin funciton takes about 15ms to complete
+while the sphere function takes approximately half of that time
+
+
+- The rastrigin funciton has a high level of variance in its solutions,
+ranging from [3,12] on average. The sphere function has better results,
+ranging from [3,6] on average
