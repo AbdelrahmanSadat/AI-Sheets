@@ -1,0 +1,3 @@
+- On average, the SA algorithm executes faster.
+It is difficult, however, to determine which algorithm produces better results
+since there's a relatively high level of variation in the results of both
