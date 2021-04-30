@@ -1,5 +1,5 @@
 - On average, the adaptive hill climb executes faster on the sphere
-problem, while also being more suitable for it than the rastrigin function.
+problem, while also being more suitable for it than the rastrigin fuwnction.
 This is likely because the rastrigin function has a large number of local
 minima as opposed to the sphere function, so it can easily get stuck
 in a non-optimal solution space.
