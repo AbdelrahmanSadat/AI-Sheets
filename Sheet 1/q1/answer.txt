@@ -1,0 +1,4 @@
+- The next ascent hill climb is always faster, while the steepest
+ascent hill climb gives noticeably better answers
+(keeping in mind the small sample size)
+
