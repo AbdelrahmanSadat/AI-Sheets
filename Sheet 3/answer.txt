@@ -1,0 +1,25 @@
+a) The answer can be seen in the first plot generated
+
+b) The function can be seen in the second generated plot
+
+c) Increases the population size causes the variety of the
+indivisuals to increase as well. Eventually leading to a better
+max, and a better average of the fitness function in each generation
+
+d) Increasing mutation rate decreases the max value of each generation,
+as well as the average fitness. This is because the randomness of the
+indivisual increases, and the algorithm starts degrading into a
+random search.
+
+e) Setting the mutation rate to 0 can cause the fitness of indivisuals
+to be stuck in a local minimum. It decreases the value of the maximum,
+and the average fitness of a generation. This lack of diversity can be
+seen from how similar the plot of the maximum and the plot of the 
+average fitness are.
+
+f) Changing the fitness function in this way (by adding 50 to number
+of ones) reduces the quality of the solution.
+The reason is, it decreases the relative difference in the fitness between 
+indivisuals. Causing the selection process to be more forgiving.
+Meaning the unfit indivisuals are more likely to be selected from
+crossover, while more fit indivisuals are less likely to be selected.
